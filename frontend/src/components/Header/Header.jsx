@@ -1,44 +1,70 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import TokenContext from '../../context/TokenContext.js';
-import "./header.css"
+import './header.css';
+
 function Header() {
-    const token = localStorage.getItem("authToken");
-    const { user } = useContext(TokenContext);
-    console.log("user", user);
-    const logout = () => {
-        localStorage.removeItem("authToken");
-        window.location.href = "/login";
-    }
+    const { user, logout } = useContext(TokenContext);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const auth = localStorage.getItem("authToken");
+        setIsLoggedIn(!!auth);
+    }, [user]);
 
     return (
         <div>
-            <nav className='header bg-slate-200 flex justify-between items-center'>
-                <div className="logo w-1/4 text-center">
-                    <NavLink to="/">Todo App</NavLink>
-                </div>
-                <div className='flex justify-between'>
-                    {
-                        token ? (
-                            <div className='flex items-center justify-center'>
-                                <p className='mr-5'>welcome, <span className=' text-xl text-blue-800 capitalize'>{user.name}</span></p>
-                                <button onClick={logout} className="logout mr-4">Logout</button>
-                            </div>
+            <header className='bg-white shadow sticky top-0 z-50'>
+                <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between'>
+                    {/* Logo */}
+                    <div className='flex-shrink-0'>
+                        <NavLink to="/" className="text-2xl font-extrabold text-blue-600 tracking-tight">
+                            Todo<span className="text-gray-800">App</span>
+                        </NavLink>
+                    </div>
+
+                    {/* Navigation */}
+                    <div className='flex items-center gap-6'>
+                        {isLoggedIn ? (
+                            <>
+                                <p className='text-gray-700 text-sm md:text-base'>
+                                    Welcome, <span className='font-semibold text-blue-700 capitalize'>{user?.name}</span>
+                                </p>
+                                <button
+                                    onClick={logout}
+                                    className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg transition"
+                                >
+                                    Logout
+                                </button>
+                            </>
                         ) : (
-                            <ul className='flex justify-end gap-3 w-3/4 pr-6'>
-                                <li>
-                                    <NavLink to="/login">Login</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/register">Register</NavLink>
-                                </li>
-                            </ul>
-                        )
-                    }
-                </div>
-            </nav>
-            <Outlet />
+                            <>
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        `text-sm font-medium ${isActive ? "text-blue-600 underline" : "text-gray-600 hover:text-blue-600"}`
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                                <NavLink
+                                    to="/register"
+                                    className={({ isActive }) =>
+                                        `text-sm font-medium ${isActive ? "text-blue-600 underline" : "text-gray-600 hover:text-blue-600"}`
+                                    }
+                                >
+                                    Register
+                                </NavLink>
+                            </>
+                        )}
+                    </div>
+                </nav>
+            </header>
+
+            {/* Main Page Content */}
+            <main className="px-4 py-6 sm:px-6 lg:px-8">
+                <Outlet />
+            </main>
         </div>
     );
 }

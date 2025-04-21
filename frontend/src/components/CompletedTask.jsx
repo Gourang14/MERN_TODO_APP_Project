@@ -1,4 +1,5 @@
 import moment from "moment"
+import React from 'react';
 function CompletedTask({task}) {
     return ( 
         <div className='bg-slate-300 py-4 rounded-lg shadow-md flex items-center justify-center gap-2 mb-3'>
