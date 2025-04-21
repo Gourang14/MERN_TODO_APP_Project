@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/MERN_TODO_APP_Project/static/css/main.823a9ef2.chunk.css",
+    "main.js": "/MERN_TODO_APP_Project/static/js/main.66f4358b.chunk.js",
+    "main.js.map": "/MERN_TODO_APP_Project/static/js/main.66f4358b.chunk.js.map",
+    "runtime-main.js": "/MERN_TODO_APP_Project/static/js/runtime-main.b932c300.js",
+    "runtime-main.js.map": "/MERN_TODO_APP_Project/static/js/runtime-main.b932c300.js.map",
+    "static/js/2.4a122d4d.chunk.js": "/MERN_TODO_APP_Project/static/js/2.4a122d4d.chunk.js",
+    "static/js/2.4a122d4d.chunk.js.map": "/MERN_TODO_APP_Project/static/js/2.4a122d4d.chunk.js.map",
+    "index.html": "/MERN_TODO_APP_Project/index.html",
+    "precache-manifest.58991980c5d451d24293da8d69133090.js": "/MERN_TODO_APP_Project/precache-manifest.58991980c5d451d24293da8d69133090.js",
+    "service-worker.js": "/MERN_TODO_APP_Project/service-worker.js",
+    "static/css/main.823a9ef2.chunk.css.map": "/MERN_TODO_APP_Project/static/css/main.823a9ef2.chunk.css.map",
+    "static/js/2.4a122d4d.chunk.js.LICENSE.txt": "/MERN_TODO_APP_Project/static/js/2.4a122d4d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b932c300.js",
+    "static/js/2.4a122d4d.chunk.js",
+    "static/css/main.823a9ef2.chunk.css",
+    "static/js/main.66f4358b.chunk.js"
+  ]
+}
